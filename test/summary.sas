@@ -1,0 +1,15 @@
+%let root=E:\ÁÖ¼ÑÄþ\ÆÀ·Ö¿¨\code\core\;
+%include "&root.globals.sas";
+%include "&root.utili.sas";
+%include "&root.base.sas";
+%include "&root.rawSample.sas";
+%grsDemographics(baseDate=20151231);
+%grsLoanBalance(baseDate=20151231);
+%grsRecordNum(baseDate=20150101,endDate=20151231);
+libname demgraph 'E:\ÁÖ¼ÑÄþ\ÆÀ·Ö¿¨\data\DB160201001\sample\B20151231_DEMOGRAPHICS';
+libname loanbal 'E:\ÁÖ¼ÑÄþ\ÆÀ·Ö¿¨\data\DB160201001\sample\B20151231_LOANBALANCE';
+libname recnum 'E:\ÁÖ¼ÑÄþ\ÆÀ·Ö¿¨\data\DB160201001\sample\B20150101_RECORDNUM';
+options user=demgraph;
+proc freq data=data noprint;
+ tables age*sex /out=agesex;
+run;
